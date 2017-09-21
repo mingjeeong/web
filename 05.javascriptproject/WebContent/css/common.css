@@ -1,0 +1,20 @@
+@charset "EUC-KR";
+
+.footer{height:70px; text-align:center; margin-top:100px;  padding: 10px;}
+.thcolor{ background-color:#EBF2F5; }
+.checkpw{color:#71CCE3;}
+.jointable{border-color:#9ACDDA; }
+.common{font-style:¸¼Àº°íµñ ;}
+.logoarea{width:1340px; height:200px; background-color:orange;  }
+.loginarea{width:350px; height:300px;   float: left;}
+.menuarea{width:1340px; height:50px; background-color:red ; float: left;}
+.searchbookarea{width:550px; height:300px; background-color:grey; float: left;}
+.calarea{width:350px; height:300px; background-color:green; float: left;}
+.booklist{width:420px; height:300px; background-color:blue; float: left;}
+.notice{width:550px; height:300px; background-color:skyblue; float: left;}
+.newbook{width:420px; height:300px; background-color:yellow; float: left;}
+.row {content: ""; display: table; clear: both;}
+.red{color:red;}
+.loginform{float: left;}
+.menumarjin{margin-left:10px; margin-right: 10px; }
+.noticem{float: right;}
