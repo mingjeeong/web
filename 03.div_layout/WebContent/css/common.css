@@ -1,0 +1,16 @@
+@charset "EUC-KR";
+/* css/common.css 공통 css 파일*/
+
+<!--링크태그 설정-->
+
+a.common{
+	
+	text-decotation : none;
+	color : #fff;
+	font-size: 30px;
+	
+}
+a.color{
+	color: #aaa;
+	
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+
+/*
+	선언방법 : 
+	선택자{속성명 : 속성값; 속성명:속성값;}
+	
+	##선택자 종류
+	{} 공통선택자
+	태그명 { 해당 태그 선택자}
+	.클래스명 {} class="" 선택자
+	#아이디명 {} id="" 선택자
+	태그명 자손태그명{} 자손태그 선택
+	태그명> 자식태그명{} 자식(하위) 태그 선택
+	태그명[속성명="속성값"] 속성에 해당 속성값 선택자
+	태그명[속성명] 속성에 해당 선택자
+	태그명 1, 태그명2, : 다중 선택자(or 선택자)
+	
+*/
+	#wrap{
+		background-color:#aaa;
+		color:white;
+		margin : 30px auto ;
+		
+	}
+	#header{
+		background-color:red;
+		width : 960px;
+		height : 100px;
+		text-align: right;
+		
+		}
+	#sidebar{
+		background-color:pink
+		width : 400px;
+		height : 500px;
+		float : left;
+		text-align: left;		
+		}
+	#contents{
+		background-color: yellow;
+		width : 560px;
+		height : 500px;
+		float: right;
+		text-align: center;		
+		}
+	#footer{
+		background-color:blue;
+		width : 960px;
+		height : 50px;
+		clear: both;
+		}
+		.sep_sym{
+		margin: 5px;
+		}
+		
+</style>
+
+<link type="text\css" rel="stylesheet" href="css\common.css">
+</head>
+<body>
+<div id="wrap">
+	<div id="header">
+	<span class="sep_sym">|</span>
+		<a class="common" href="#">로그인</a>
+		<span class="sep_sym">|</span>
+		<a class="common" href="#">회원가입</a>
+		<span class="sep_sym">|</span>
+		<a href="#">아이디/비밀번호 찾기</a>
+		<span class="sep_sym">|</span>
+	</div>
+	<div id="sidebar">sidebar</div>
+	<div id="contents">contents</div>
+	<div id="footer">footer</div>
+</div>
+</body>
+</html>
