@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>로그인 </title>
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<script>
+	<!--submit 요청 검증 함수 -->
+	
+	function checkForm1() {
+		//아이디
+		var id = document.getElementById("memberId").value.trim();
+		//비밀번호
+		var pw = document.getElementById("memberPw").value.trim();
+		//콘솔창 아이디,비밀번호 출력 디버깅
+		//console.log(id + " " + pw);
+		//alert(id + " " + pw);
+		//아이디 검증 : 필수항목
+		if (id.length == 0) {
+			alert("아이디는 필수 입력 항목입니다.");
+			document.getElementById("memberId").focus();
+			return false;
+		}
+		//비밀번호 검증 : 필수 항목 4자리, 숫자 4자리
+		//숫자여부 검증 내장 함수 isNaN(000) => 문자열 true
+		else if (pw.length > 4) {
+			alert("비밀번호는 최대 4자리 입력하세요.");
+			return false;
+		} else {
+			if (isNaN(pw)) {
+				alert("비밀번호는 숫자 4자리 입력하세요.")
+				return false;
+			}
+		}
+		alert("성공");
+		return true;
+	}
+	function resetForm1() {
+		document.loginForm.reset();
+	}
+	function resetForm2() {
+		document.loginForm.reset();
+	}
+	//버튼 요청 검증 함수
+	function checkForm2() {
+		//아이디
+		var id = document.getElementById("memberId").value.trim();
+		//비밀번호
+		var pw = document.getElementById("memberPw").value.trim();
+		//콘솔창 아이디,비밀번호 출력 디버깅
+		//console.log(id + " " + pw);
+		//alert(id + " " + pw);
+		//아이디 검증 : 필수항목
+		if (id.length == 0) {
+			alert('아이디는 필수 입력 항목입니다.');
+			document.getElementById("memberId").focus();
+			return;
+		}
+		//비밀번호 검증 : 필수 항목 4자리, 숫자 4자리
+		//숫자여부 검증 내장 함수 isNaN(000) => 문자열 true
+		else if (pw.length > 4) {
+			alert("비밀번호는 최대 4자리 입력하세요.");
+			return;
+		} else {
+			if (isNaN(pw)) {
+				alert("비밀번호는 숫자 4자리 입력하세요.")
+				return;
+			}
+		}
+		document.loginForm.submit();
+	}
+</script>
+</head>
+<body>
+<!-- 로고이미지 -->
+<a href="index.html"><img src="images/flower_image01.jpg" alt="꽃이미지" title="시작페이지 이동 풍선도" width="100" height="100"></a>
+
+<!-- 로그인 전 메뉴 영역 -->
+<ul>
+	<li><a href="login.html">로그인</a></li>
+	<li><a href="join.html">회원가입</a></li>
+</ul>
+
+<h3>로그인</h3>
+<form name= "loginForm" action="service.html" method="post">
+<table align="center">
+	<tr>
+		<td>아이디</td>
+		<td><input name="memberId" id="memberId" type="text" title="아이디는 영문대소문자숫자"></td>
+	</tr>
+	<tr>
+		<td>비밀번호</td>
+		<td><input name="memberPw" id="memberPw" type="password" title="비밀번호는 숫자 4자리"></td>
+	</tr>
+	
+	<!-- 요청/취소 : submit/reset -->
+	<tr>
+		<td colspan="2"  align="center">
+		<input class="bt_common" name="login" type="submit" value="submit" onclick="return checkForm1()">
+		<input class="bt_common" name="cancel" type="reset" value="reset"onclick="return resetForm1()" >
+		
+		</td>
+	</tr>
+	<!-- 요청/취소 :a태그 -->
+	<tr>
+		<td colspan="2"  align="center">
+		<a href="javascript:checkForm2()"><img src="images\flower_image01.jpg" width="100" height="100">ok</a>
+		<a href="javascript:resetForm2()"><img src="images\flower_image01.jpg" width="100" height="100">cancel</a>
+		</td>
+	</tr>
+	<!-- 요청/취소 : 이미지 -->
+	<tr>
+		<td colspan="2"  align="center">
+		<input type="image" src="images\flower_image01.jpg" width="100" height="100" onclick="return checkForm1()">
+		<input type="image" src="images\flower_image01.jpg" width="100" height="100" onclick="return resetForm1()" >
+		</td>
+	</tr>
+	<!-- 요청/취소 : button -->
+	<tr>
+		<td colspan="2"  align="center">
+		<input class="bt_common" name="login" type="button" value="login"  onclick="checkForm2()">
+		<input class="bt_common" name="cancel" type="button" value="cancel" onclick="resetForm2()">
+		
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

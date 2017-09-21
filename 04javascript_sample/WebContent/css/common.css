@@ -1,0 +1,61 @@
+@charset "EUC-KR";
+
+/*공통 스타일 : css/common.css*/
+
+a{
+	text-decoration:none; color:#aaa; font-size:15px;
+}
+
+/*
+input 태그 설정
+--필수입력 항목 background-color 설정
+
+.클래스명
+input.클래스명
+*/
+
+input.essential{
+	background-color:#B5CFFE;
+}
+
+/*
+*필수항목 마킹 설정
+*/
+
+span.color_marker{
+	color:#f00;
+	font-weight:bold;
+	margin : 5px auto;
+}
+/*버튼 설정*/
+input.bt_common{
+	width:100px;
+}
+input.bt_color_1{
+	
+	background-color:red;
+}
+input.bt_color_2{
+	
+	background-color:blue;
+}
+
+/* 좌우여백 설정*/
+span.normal{
+	margin : 0 2px;
+}
+
+/*읽기전용*/
+input.selected_email{
+	background-color:#EDEDED;
+}
+/* div설정*/
+
+/* 푸터*/
+div.footer{
+	height : 70px;
+	text-align : center;
+	margin-top: 100px;
+	
+}
+

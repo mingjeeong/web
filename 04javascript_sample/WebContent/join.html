@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>회원가입</title>
+<link type="text/css" rel="stylesheet" href="css/common.css">
+
+<!-- javascript 내부 -->
+<script type="text/javascript">
+
+	/*전역변수*/
+	var name="홍길동";
+	var age="age";
+	title="자바스크립트 실습";
+	
+	/*함수선언*/
+	function printInfo(){
+		//html 문서 동적 화면 구성 : 전역변수 설정값을 출력 구성
+		document.write("<hr>");
+		document.write("hr태그 입니다");
+		document.write("<hr>");
+	}
+		
+	/* 페이지 초기화 함수*/
+	function init(){
+		//이벤트 핸들러 연결 검증
+		//alert("init() call");
+		
+		//입력양식(form)의 입력항목 사용방법
+		//document.폼이름.입력항목이름=>입력항목객체
+		document.joinForm.memberId.focus();
+	}
+	/*페이지 초기화 함수
+	--아이디 포커스 위치
+	
+	*/
+	
+	
+	/*아이디 필수 입력항목 검증 함수
+		아이디 입력 문자열 : String
+		문자열 길이: length(속성)
+		필수입력여부
+		최소길이 검증
+		경고창 메세지 출력후에 잘못입력한 아이디 항목으로 포커스 이동
+		
+	*/
+	function checkMemberId(takeElement, takeData){
+		//Text 객체 : 폼이름.입력항목이름
+		var memberIdElement = document.joinForm.memberId;
+	
+		//id 속성을 사용해서 객체 가져오기
+		var memberIdElement2 = document.getElementById("memberId");
+			
+		//alert(takeData+","+takeData.trim().length);
+		var length =takeData.trim().length;
+		var memberId = takeElement.value;
+		var message ="";
+		
+		
+		if(length<6){
+			message="id 6자리 이상 입력해주세요";
+			alert(message);
+			//document.joinForm.memberId.focus();
+			memberId.focus();
+		}
+		else if(length==0){
+			alert("필수입력 항목입니다.");
+			document.joinForm.memberId.focus();
+		}
+		
+		
+	}
+	
+	function checkMemberPw(){
+		var memberPwElement = document.getElementById("memberPw");
+		var memberPwConfirmElement = document.getElementById("memberPwConfirm");
+		
+		
+		if(memberPwElement.value!=memberPwConfirmElement.value){
+			alert("비밀번호가 동일하지 않습니다. 다시 확인해주세요");
+			memberPwElement.focus();
+		}
+		
+	}
+	function showPw(){
+		if(joinForm.isDisplayOn.checked){
+			joinForm.memberPw.type="text";
+			joinForm.memberPwConfirm.type="text";
+		}
+		else{
+			joinForm.memberPw.type="password";
+			joinForm.memberPwConfirm.type="password";
+			
+		}
+	}
+	
+	function setreadonly(){
+		
+		joinForm.email2.readonly=false;
+		
+	
+	}
+	function selectEmail(email) {
+		if (joinForm.email1.value.trim().length == 0) {
+			alert("이메일을 입력해주세요");
+			document.joinForm.email1.focus();
+			console.log(email);
+			console.log(email.options[0].values);
+			joinForm.emailSelected.value = email.options[0].value;
+		}
+		else if(email.value=="직접 입력"){
+			joinForm.email2.value ="";
+			 document.joinForm.email2.readOnly=false;
+			 joinForm.email2.style.background="#ffffff";
+		}
+		else {
+			joinForm.email2.value = email.value;
+			document.joinForm.email2.readOnly=true;
+		}
+	}
+	
+	function mobilenext(){
+		
+	}
+	
+	function counttext(){
+		var text = document.getElementById("about");
+		var count = document.getElementById("count");
+		
+		count.innerHTML=(text.value.length+1)+"/20";
+		
+	}
+	
+	function set(){
+		var text = document.getElementById("about");
+		var count = document.getElementById("count");
+		
+		count.innerHTML="0/20";
+		text.value="";
+		text.focus();
+		
+	}
+	/*아이디중복확인 함수
+	클릭하면 페이지 열기 :isId.html
+	부모창에서 입력한 아이디정보를 자식창의 아이디정보로 초기화 설정
+	*/
+	function openisid(){
+		var url ='isId.html';
+		var winName ='idCheck';
+		var winConfig ='top=100,left=100,height=160,width=520,resizable=no,scrollbar=no';
+		var childWin = window.open(url,winName,winConfig);
+	
+		//부모창에 입력한 아이디 가지고 오기
+		var memberId = document.getElementById("memberId").value.trim();
+		
+		//자식창의 아이디로 초기값 설정
+		//childWin.document.isId.checkMemberId=memberId.value;
+	
+	}
+	
+	
+	
+	
+	
+
+	/*이벤트 : 로드될때 회원가입 아이디 입력항목 포커스 초기화 */
+	window.onload = function() {
+		//alert("페이지가 로딩하고있습니다.");
+		init();
+	}
+
+	//함수호출
+	//printInfo();
+</script>
+<noscript>
+	자바스크립트가 정상 구동되지 않습니다
+</noscript>
+
+</head>
+<!--  <body onload="alert('페이지로딩중입니다')">-->
+<body>
+<!-- 로고이미지 -->
+<a href="index.html"><img src="images/flower_image01.jpg" alt="꽃이미지" title="시작페이지 이동 풍선도" width="100" height="100"></a>
+
+<!-- 로그인 전 메뉴 영역 -->
+<ul>
+	<li><a href="login.html">로그인</a></li>
+	<li><a href="join.html">회원가입</a></li>
+</ul>
+
+
+<h3>회원가입</h3>
+<form name="joinForm">
+<table border="1" align="center">
+	<tr ><td colspan="2" align="right" ><span class="color_marker">*</span>필수 입력 항목입니다</td></tr>
+	<tr>
+		<td><span class="color_marker">*</span>아이디 :<td>
+		<input class="essential" name="memberId" id="memberId" type ="text" maxlength="20" onblur="checkMemberId(this,this.value)" >
+			 <input type="button" value="아이디중복조회" onclick="openisid()">[6-20자리 이내 입력]
+			<!--  onblur="checkMemberId(this,this.value)"-->
+		
+	</tr>
+	<tr>
+		<td><span class="color_marker">*</span>비밀번호 :</td>
+		<td><input class="essential" name="memberPw" id="memberPw" type="password" maxlength="20" >
+			<input class="essential" name="isDisplayOn" id="isDisplayOn" type="checkbox" onclick="showPw()"   >비밀번호 보기
+		</td>
+	</tr>
+	<tr>
+		<td><span class="color_marker">*</span>비밀번호 확인 :</td>
+		<td><input class="essential" name="memberPwConfirm" id="memberPwConfirm" 
+		type="password" maxlength="20" onblur="checkMemberPw()"></td>
+		
+	</tr>
+	<tr> 
+		<td><span class="color_marker">*</span>이름</td>
+		<td><input class="essential" name="memberName" type="text" ></td>
+	</tr>
+	<tr>
+		<td><span class="color_marker">*</span>등급</td>
+		<td><input type="radio" name="grade" value="G" checked >일반
+		<input type="radio" name="grade" value="S" disabled>우수
+		<input type="radio" name="grade" value="A"  disabled>관리자
+		</td>
+		
+	</tr>
+	<tr>
+		<td>이메일</td>
+		<td><input name="email1" id="email1" type="text"><span class="normal" >@</span>
+		<input class="selected_email" title="이메일사이트를 선택하시오" name="email2" id="email2" type="text" readonly>
+		<select name="emailSelected" id="emailSelected" onchange="selectEmail(this)" >
+			<option value="==선택하시오==">==선택하시오==</option>
+			<option value="daum.com">daum.com</option>
+			<option value="nate.com">nate.com</option>
+			<option value="naver.com">naver.com</option>
+			<option value="직접 입력">직접 입력</option>
+		</select>
+	</tr>
+	<tr>
+		<td>휴대폰 : </td>
+		<td>
+			<select name="mobile1" > 
+				<option>==선택==</option>
+				<option>010</option>
+				<option>011</option>
+				<option>019</option>
+			</select><span class="normal" >-</span>
+			<input name="mobile2" type="text" size="6" maxlength="4"><span class="normal" onblur="next()">-</span><input name="mobile3" type="text" size="6" maxlength="4"></td>
+	</tr>
+	
+	<tr>
+		<td colspan="2">자기소개 <span id="count" ></span></td>
+	</tr>
+	
+	<tr>
+		<td colspan="2"><textarea name="about" id="about" rows="10" cols="100" onkeydown="counttext()" >나를 소개해주세요</textarea>
+		</td>
+	</tr>
+	<tr>
+		<td>수신여부 :</td>
+		<td><input type="radio" name=isEmail value="1" checked>이메일 수신
+			<input type="radio" name=isEmail value="0">이메일 수신거부
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">
+			<input class="bt_common bt_color_1" type="button" value="회원가입">
+			<input class="bt_common bt_color_2" type="button" value="초기화" onclick="set()">
+		</td>
+	</tr>
+	
+</table>
+	
+
+</form>
+<div class="footer">
+	<a href="#">사이트 소개</a>
+	<a href="#">개인정보보호방침</a>
+	<a href="#">찾아오시는길</a>
+</div>
+</body>
+</html>
